@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Service</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Request a Ride</h1>
+    <table>
+        <tr>
+            <th>Rider Name</th>
+            <th>Location</th>
+            <th>Request Ride</th>
+        </tr>
+        {% for rider in riders %}
+        <tr>
+            <td>{{ rider.name }}</td>
+            <td>{{ rider.location }}</td>
+            <td>
+                <form action="/request_ride" method="POST">
+                    <input type="hidden" name="rider_id" value="{{ rider.id }}">
+                    <input type="text" name="pickup_location" placeholder="Enter Pickup Location" required>
+                    <button type="submit">Request Ride</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
